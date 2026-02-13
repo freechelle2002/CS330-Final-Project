@@ -18,7 +18,7 @@
 class ViewManager
 {
 public:
-	// constructor
+	// constructormo
 	ViewManager(
 		ShaderManager* pShaderManager);
 	// destructor
@@ -26,6 +26,10 @@ public:
 
 	// mouse position callback for mouse interaction with the 3D scene
 	static void Mouse_Position_Callback(GLFWwindow* window, double xMousePos, double yMousePos);
+
+	// mouse scroll callback for adjusting camera movement speed
+	static void Mouse_Scroll_Callback(GLFWwindow* window, double xOffset, double yOffset);
+
 
 private:
 	// pointer to shader manager object
