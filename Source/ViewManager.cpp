@@ -101,20 +101,22 @@ GLFWwindow* ViewManager::CreateDisplayWindow(const char* windowTitle)
 	glfwMakeContextCurrent(window);
 
 	// tell GLFW to capture all mouse events
-	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
 
 	// this callback is used to receive mouse moving events
 	glfwSetCursorPosCallback(window, &ViewManager::Mouse_Position_Callback);
+	glfwSetScrollCallback(window, &ViewManager::Mouse_Scroll_Callback);
+
+
 
 	// enable blending for supporting tranparent rendering
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	m_pWindow = window;
 
 	return(window);
 }
-
 /***********************************************************
  *  Mouse_Position_Callback()
  *
@@ -124,6 +126,14 @@ GLFWwindow* ViewManager::CreateDisplayWindow(const char* windowTitle)
 void ViewManager::Mouse_Position_Callback(GLFWwindow* window, double xMousePos, double yMousePos)
 {
 }
+void ViewManager::Mouse_Scroll_Callback(GLFWwindow* window, double xOffset, double yOffset)
+{
+	if (g_pCamera != nullptr)
+	{
+		g_pCamera->ProcessMouseScroll((float)yOffset);
+	}
+}
+
 
 /***********************************************************
  *  ProcessKeyboardEvents()
@@ -156,6 +166,23 @@ void ViewManager::ProcessKeyboardEvents()
 	{
 		bOrthographicProjection = true;
 	}
+	if (glfwGetKey(m_pWindow, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		g_pCamera->ProcessKeyboard(FORWARD, gDeltaTime);
+	}
+	if (glfwGetKey(m_pWindow, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		g_pCamera->ProcessKeyboard(BACKWARD, gDeltaTime);
+	}
+	if (glfwGetKey(m_pWindow, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		g_pCamera->ProcessKeyboard(LEFT, gDeltaTime);
+	}
+	if (glfwGetKey(m_pWindow, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		g_pCamera->ProcessKeyboard(RIGHT, gDeltaTime);
+	}
+
 }
 
 /***********************************************************
