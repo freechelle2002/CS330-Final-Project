@@ -50,3 +50,11 @@ Visual Studio
 
 Michelle Thompson  
 SNHU Computer Science
+
+## Reflection
+
+Through this project, I learned how to build and navigate a 3D environment using OpenGL. I gained a better understanding of how lighting, textures, and object positioning work together to create depth and realism.
+
+One of the biggest challenges I faced was troubleshooting and debugging when the scene did not render correctly. Earlier in the course I fell behind due to illness and had to redo several assignments, which strengthened my patience and problem-solving skills. Working through trial and error helped me become more confident in fixing errors and understanding how graphics systems function.
+
+I can apply these skills in future coursework and potentially in areas such as game development, simulation environments, and data visualization. This project strengthened my understanding of spatial thinking and improved my confidence working with graphics programming.
